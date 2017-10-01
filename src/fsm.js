@@ -73,7 +73,10 @@ class FSM {
     /**
      * Clears transition history
      */
-    clearHistory() {}
+    clearHistory() {
+       this.undoStack.length = 0;
+       this.redoStack.length = 0;
+    }
 }
 
 module.exports = FSM;
