@@ -61,7 +61,14 @@ class FSM {
      * Returns false if undo is not available.
      * @returns {Boolean}
      */
-    undo() {}
+    undo() {
+      if (this.undoStack.length > 1) {
+            this.redoStack.push(this.undoStack.pop());
+            this.state = this.undoStack[this.undoStack.length - 1];
+            return true;
+        }
+        else return false;
+    }
 
     /**
      * Goes redo to state.
