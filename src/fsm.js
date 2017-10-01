@@ -75,7 +75,14 @@ class FSM {
      * Returns false if redo is not available.
      * @returns {Boolean}
      */
-    redo() {}
+    redo() {
+          if (this.redoStack.length) {
+            this.undoStack.push(this.redoStack.pop());
+            this.state = this.undoStack[this.undoStack.length - 1];
+            return true;
+        }
+        else return false;
+    }
 
     /**
      * Clears transition history
