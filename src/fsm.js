@@ -17,13 +17,19 @@ class FSM {
      * Returns active state.
      * @returns {String}
      */
-    getState() {}
+    getState() {
+    return this.state;
+    }
 
     /**
      * Goes to specified state.
      * @param state
      */
-    changeState(state) {}
+    changeState(state) {
+    this.state = state;
+    this.undoStack.push(this.state);
+    this.redoStack.length = 0;
+    }
 
     /**
      * Changes state according to event transition rules.
